@@ -1,12 +1,12 @@
 package com.kapx.webportal.service;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.ContextConfiguration;
@@ -20,10 +20,9 @@ import com.kapx.webportal.entity.User;
 @ContextConfiguration(locations = "classpath:spring-context/spring-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
-public class UserServiceTest extends
-		AbstractTransactionalJUnit4SpringContextTests {
+public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTests {
 
-	private static Logger logger = Logger.getLogger(UserServiceTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserServiceTest.class);
 
 	@Autowired
 	private UserService<User, Long> userService;
@@ -42,8 +41,6 @@ public class UserServiceTest extends
 			user.setUsername("dekapx");
 			user.setPassword("password");
 			user.setEmail("dekapx@gmail.com");
-			user.setInsertTime(new Date());
-			user.setUpdateTime(new Date());
 			user.setRole(role);
 
 			userService.save(user);
@@ -56,8 +53,6 @@ public class UserServiceTest extends
 			user.setUsername("testuser");
 			user.setPassword("password");
 			user.setEmail("test@gmail.com");
-			user.setInsertTime(new Date());
-			user.setUpdateTime(new Date());
 			user.setRole(role);
 
 			userService.save(user);
@@ -86,8 +81,7 @@ public class UserServiceTest extends
 			User user = userService.findByUsername(username);
 			logger.info("find by user name " + user.getUsername());
 		} catch (UsernameNotFoundException e) {
-			logger.error("error for searching username " + username);
-			logger.error(e);
+			logger.error("error for searching username {}", username, e);
 		}
 	}
 }

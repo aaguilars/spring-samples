@@ -3,7 +3,8 @@ package com.kapx.webportal.service.impl;
 import java.util.Collection;
 
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,7 +21,7 @@ import com.kapx.webportal.service.UserService;
 
 @Service("userService")
 public class UserServiceImpl implements UserService<User, Long> {
-	private static Logger logger = Logger.getLogger(UserServiceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
 	@Autowired
 	@Qualifier("userDAO")
@@ -48,27 +49,22 @@ public class UserServiceImpl implements UserService<User, Long> {
 	public Collection<User> findAll(int page, int pageSize) {
 		Collection<User> users = userDAO.findAll(page, pageSize);
 
-		Preconditions.checkArgument(CollectionUtils.isNotEmpty(users),
-				"Unable to load all the users");
+		Preconditions.checkArgument(CollectionUtils.isNotEmpty(users), "Unable to load all the users");
 
 		return userDAO.findAll(page, pageSize);
 	}
 
 	@Override
-	public User findByUsername(String username)
-			throws UsernameNotFoundException {
+	public User findByUsername(String username) throws UsernameNotFoundException {
 		try {
-			Preconditions
-					.checkNotNull(username, "Username should not be null.");
+			Preconditions.checkNotNull(username, "Username should not be null.");
 
 			User userEntity = userDAO.findByUsername(username);
-			Preconditions.checkNotNull(userEntity,
-					"Unable to find the username " + username);
+			Preconditions.checkNotNull(userEntity, "Unable to find the username " + username);
 
 			return userEntity;
 		} catch (Exception e) {
-			throw new UsernameNotFoundException("Unable to find the user "
-					+ username);
+			throw new UsernameNotFoundException("Unable to find the user " + username);
 		}
 	}
 

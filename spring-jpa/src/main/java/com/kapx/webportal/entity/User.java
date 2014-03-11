@@ -1,7 +1,5 @@
 package com.kapx.webportal.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,12 +31,6 @@ public class User {
 
 	@Column(name = "EMAIL")
 	private String email;
-
-	@Column(name = "INS_TIME")
-	private Date insertTime;
-
-	@Column(name = "UPD_TIME")
-	private Date updateTime;
 
 	@OneToOne
 	private Role role;
@@ -92,22 +84,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Date getInsertTime() {
-		return insertTime;
-	}
-
-	public void setInsertTime(Date insertTime) {
-		this.insertTime = insertTime;
-	}
-
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
 	}
 
 	public Role getRole() {

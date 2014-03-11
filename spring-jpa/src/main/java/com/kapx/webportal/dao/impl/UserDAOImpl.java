@@ -5,7 +5,8 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.kapx.webportal.dao.UserDAO;
@@ -14,7 +15,7 @@ import com.kapx.webportal.entity.User;
 @Repository("userDAO")
 public class UserDAOImpl extends AbstractBaseDAO<User, Long> implements UserDAO {
 
-	private static Logger logger = Logger.getLogger(UserDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
 
 	public UserDAOImpl() {
 		super(User.class);
@@ -40,8 +41,7 @@ public class UserDAOImpl extends AbstractBaseDAO<User, Long> implements UserDAO 
 
 	@Override
 	public User findByUsername(String username) {
-		TypedQuery<User> query = (TypedQuery<User>) entityManager.createQuery(
-				"select u from User u where u.username = ?1", User.class);
+		TypedQuery<User> query = (TypedQuery<User>) entityManager.createQuery("select u from User u where u.username = ?1", User.class);
 		query.setParameter(1, username);
 		List<User> users = query.getResultList();
 		return users.iterator().next();
