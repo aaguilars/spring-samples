@@ -25,7 +25,7 @@ public class ContactWriter implements ItemWriter<Contact> {
 	public void write(final List<? extends Contact> contacts) throws Exception {
 
 		for (Contact contact : contacts) {
-			logger.info("Writing contact information FirstName: {}, LastName: {}, Email: {}", contact.getFirstName(), contact.getLastName(), contact.getEmail());
+			logger.debug("Writing contact information FirstName: {}, LastName: {}, Email: {}", contact.getFirstName(), contact.getLastName(), contact.getEmail());
 
 			contactService.save(contact);
 		}

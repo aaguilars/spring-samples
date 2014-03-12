@@ -14,17 +14,17 @@ public class AppJobExecutionListener implements JobExecutionListener {
 
 	public void afterJob(JobExecution jobExecution) {
 		if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
-			logger.info("Job completed with JobId {} ", jobExecution.getJobId());
+			logger.debug("Job completed with JobId {} ", jobExecution.getJobId());
 		} else if (jobExecution.getStatus() == BatchStatus.FAILED) {
-			logger.info("Job failed with JobId {} ", jobExecution.getJobId());
+			logger.debug("Job failed with JobId {} ", jobExecution.getJobId());
 		}
 	}
 
 	public void beforeJob(JobExecution jobExecution) {
 		if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
-			logger.info("Job completed with JobId {} ", jobExecution.getJobId());
+			logger.debug("Job completed with JobId {} ", jobExecution.getJobId());
 		} else if (jobExecution.getStatus() == BatchStatus.FAILED) {
-			logger.info("Job failed with JobId {} ", jobExecution.getJobId());
+			logger.debug("Job failed with JobId {} ", jobExecution.getJobId());
 		}
 	}
 }

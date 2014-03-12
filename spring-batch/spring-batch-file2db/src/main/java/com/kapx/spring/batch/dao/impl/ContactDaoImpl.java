@@ -21,7 +21,7 @@ public class ContactDaoImpl extends AbstractJpaDAO<Contact, Long> implements Con
 	public Contact save(final Contact entity) {
 		super.persist(entity);
 
-		logger.info("Persist a Contact entity in persistance store with ID {}", entity.getId());
+		logger.debug("Persist a Contact entity in persistance store with ID {}", entity.getId());
 
 		return entity;
 	}

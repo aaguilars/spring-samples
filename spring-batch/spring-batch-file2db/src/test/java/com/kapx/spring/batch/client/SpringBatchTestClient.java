@@ -1,28 +1,31 @@
 package com.kapx.spring.batch.client;
 
-import java.io.File;
+import static org.junit.Assert.assertEquals;
 
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobParametersBuilder;
-import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.item.file.FlatFileItemReader;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.FileSystemResource;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.batch.core.BatchStatus;
+import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.test.JobLauncherTestUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:spring-context/spring-context-test.xml" })
 public class SpringBatchTestClient {
-	public static void main(String[] args) throws Exception {
-		final String filePath = "src/test/resources/contents/Contacts.txt";
-		final File file = new File(filePath);
 
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring-context/spring-context.xml");
+	@Autowired
+	private JobLauncherTestUtils jobLauncherTestUtils;
 
-		Job job = (Job) context.getBean("fileUploadJob");
-		FlatFileItemReader itemReader = (FlatFileItemReader) context.getBean("itemReader");
-		JobLauncher jobLauncher = (JobLauncher) context.getBean("jobLauncher");
+	@Test
+	public void launchJob() throws Exception {
 
-		JobParametersBuilder jpBuilder = new JobParametersBuilder();
-		itemReader.setResource(new FileSystemResource(file));
-		jobLauncher.run(job, jpBuilder.toJobParameters());
+		JobExecution jobExecution = jobLauncherTestUtils.launchJob();
+
+		// JobExecution jobExecution = jobLauncherTestUtils.launchStep("step1");
+
+		assertEquals(BatchStatus.COMPLETED, jobExecution.getStatus());
+
 	}
 }
