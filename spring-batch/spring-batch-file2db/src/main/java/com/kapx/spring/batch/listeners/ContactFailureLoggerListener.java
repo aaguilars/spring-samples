@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class ContactFailureLoggerListener extends ItemListenerSupport {
 	private static final Logger logger = LoggerFactory.getLogger(ContactFailureLoggerListener.class);
 
-	public void onReadError(Exception ex) {
+	public void onReadError(final Exception ex) {
 		logger.error("Encountered error on read.", ex);
 	}
 
-	public void onWriteError(Exception ex, Object item) {
+	public void onWriteError(final Exception ex, final Object item) {
 		logger.error("Encountered error on write.", ex);
 	}
 }

@@ -27,7 +27,7 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 	@Autowired
 	private UserService<User, Long> userService;
 
-	// @Test
+	@Test
 	public void save() {
 		Role role = null;
 		User user = null;
@@ -63,7 +63,7 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 		}
 	}
 
-	// @Test
+	@Test
 	public void getAll() {
 		Collection<User> users = userService.findAll(1, 2);
 		if (CollectionUtils.isNotEmpty(users)) {

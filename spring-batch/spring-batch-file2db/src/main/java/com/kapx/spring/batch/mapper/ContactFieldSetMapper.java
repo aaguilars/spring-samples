@@ -8,17 +8,17 @@ import com.kapx.spring.batch.model.Contact;
 
 public class ContactFieldSetMapper implements FieldSetMapper<Contact> {
 
-	private static final int FIRST_NAME = 1;
-	private static final int LAST_NAME = 2;
-	private static final int EMAIL = 3;
+	private static final int FIRST_NAME = 0;
+	private static final int LAST_NAME = 1;
+	private static final int EMAIL = 2;
 
 	@Override
-	public Contact mapFieldSet(FieldSet fieldSet) throws BindException {
+	public Contact mapFieldSet(final FieldSet fieldSet) throws BindException {
 		if (fieldSet == null) {
-			throw new IllegalStateException();
+			throw new IllegalStateException("Exception in Field Set Mapper. Field Set Mapper must not be null...");
 		}
 
-		Contact contact = new Contact();
+		final Contact contact = new Contact();
 		contact.setFirstName(fieldSet.readString(FIRST_NAME));
 		contact.setLastName(fieldSet.readString(LAST_NAME));
 		contact.setEmail(fieldSet.readString(EMAIL));
