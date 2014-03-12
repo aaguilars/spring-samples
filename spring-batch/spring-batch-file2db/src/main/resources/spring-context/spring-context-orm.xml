@@ -13,10 +13,6 @@
 			http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
 			http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
 
-	<context:annotation-config />
-	
-	<context:component-scan base-package="com.kapx.spring.batch" />
-
 	<context:property-placeholder location="classpath:config/jdbc.properties" />
 
 	<!-- Connection Pool -->
