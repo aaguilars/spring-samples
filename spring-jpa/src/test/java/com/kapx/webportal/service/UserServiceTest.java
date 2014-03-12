@@ -3,6 +3,7 @@ package com.kapx.webportal.service;
 import java.util.Collection;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -63,6 +64,7 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
 		}
 	}
 
+	@Ignore
 	@Test
 	public void getAll() {
 		Collection<User> users = userService.findAll(1, 2);
