@@ -5,7 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
+import org.springframework.stereotype.Component;
 
+@Component("jobExecutionListener")
 public class AppJobExecutionListener implements JobExecutionListener {
 
 	private static final Logger logger = LoggerFactory.getLogger(AppJobExecutionListener.class);

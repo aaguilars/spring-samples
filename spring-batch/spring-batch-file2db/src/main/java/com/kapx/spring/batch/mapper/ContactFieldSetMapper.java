@@ -2,10 +2,12 @@ package com.kapx.spring.batch.mapper;
 
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.batch.item.file.transform.FieldSet;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.BindException;
 
-import com.kapx.spring.batch.model.Contact;
+import com.kapx.spring.batch.entity.Contact;
 
+@Component("contactFieldSetMapper")
 public class ContactFieldSetMapper implements FieldSetMapper<Contact> {
 
 	private static final int FIRST_NAME = 0;

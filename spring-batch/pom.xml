@@ -10,7 +10,6 @@
 	<properties>
 		<spring.version>4.0.2.RELEASE</spring.version>
 		<spring-batch.version>2.2.5.RELEASE</spring-batch.version>
-		<hibernate-jpa-api.version>1.0.1.FINAL</hibernate-jpa-api.version>
 		<hibernate-entitymanager.version>4.3.4.Final</hibernate-entitymanager.version>
 		<spring-data-jpa.version>1.5.0.RELEASE</spring-data-jpa.version>
 
@@ -63,12 +62,12 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>${spring-data-jpa.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>${hibernate-jpa-api.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hibernate.javax.persistence</groupId>
+					<artifactId>hibernate-jpa-2.0-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
