@@ -8,10 +8,10 @@
 	<name>spring-batch</name>
 
 	<properties>
-		<spring.version>4.0.2.RELEASE</spring.version>
-		<spring-batch.version>2.2.5.RELEASE</spring-batch.version>
+		<spring.version>4.0.6.RELEASE</spring.version>
+		<spring-batch.version>3.0.1.RELEASE</spring-batch.version>
 		<hibernate-entitymanager.version>4.3.4.Final</hibernate-entitymanager.version>
-		<spring-data-jpa.version>1.5.0.RELEASE</spring-data-jpa.version>
+		<spring-data-jpa.version>1.6.4.RELEASE</spring-data-jpa.version>
 
 		<mysql-connector.version>5.1.29</mysql-connector.version>
 
