@@ -1,6 +1,7 @@
 package com.kapx.spring.beans;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,6 @@ public class HelloWorldImplTest {
 	@Test
 	public void sayHello_withCorrectArgument_throwsCorrectOutput() {
 		final String actual = helloWorld.sayHello("Kapx");
-		Assert.assertEquals("Hello ! Kapx", actual);
+		assertEquals("Hello ! Kapx", actual);
 	}
 }
