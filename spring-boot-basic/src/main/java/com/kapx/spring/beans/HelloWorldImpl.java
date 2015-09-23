@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class HelloWorldImpl implements HelloWorld {
 
 	@Override
-	public String sayHello(String arg) {
+	public String sayHello(final String arg) {
 		if (arg == null || arg.isEmpty()) {
 			throw new IllegalArgumentException("Argument must not be null");
 		}

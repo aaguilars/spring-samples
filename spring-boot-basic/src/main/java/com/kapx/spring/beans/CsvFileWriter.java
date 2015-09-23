@@ -7,7 +7,7 @@ public class CsvFileWriter implements FileWriter {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CsvFileWriter.class);
 
 	@Override
-	public void write(String contents) {
+	public void write(final String contents) {
 		LOGGER.info("CsvFileWriter :: " + contents);
 	}
 
