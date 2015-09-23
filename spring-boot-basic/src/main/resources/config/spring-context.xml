@@ -4,6 +4,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
 	<bean id="helloWorld" class="com.kapx.spring.beans.HelloWorldImpl" />
+	
+	<bean id="csvFileWriter" class="com.kapx.spring.beans.CsvFileWriter" />
+	<bean id="textFileWriter" class="com.kapx.spring.beans.TextFileWriter" />
+	<bean id="xmlFileWriter" class="com.kapx.spring.beans.XmlFileWriter" />
 
 </beans>
 

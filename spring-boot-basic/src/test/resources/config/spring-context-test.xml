@@ -5,5 +5,9 @@
 
 	<bean id="helloWorld" class="com.kapx.spring.beans.HelloWorldImpl" />
 
+	<bean id="csvFileWriter" class="com.kapx.spring.beans.CsvFileWriter" />
+	<bean id="textFileWriter" class="com.kapx.spring.beans.TextFileWriter" />
+	<bean id="xmlFileWriter" class="com.kapx.spring.beans.XmlFileWriter" />
+
 </beans>
 
