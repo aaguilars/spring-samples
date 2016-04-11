@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:applicationContext.xml")
+@ContextConfiguration(locations = "classpath:applicationContext-Test.xml")
 public class FileWriterTest {
 
     @Autowired
@@ -16,15 +16,25 @@ public class FileWriterTest {
     private FileWriter csvFileWriter;
 
     @Autowired
-    @Qualifier("csvFileWriter")
-    private FileWriter csvFileWriter;
+    @Qualifier("textFileWriter")
+    private FileWriter textFileWriter;
 
     @Autowired
-    @Qualifier("csvFileWriter")
-    private FileWriter csvFileWriter;
+    @Qualifier("xmlFileWriter")
+    private FileWriter xmlFileWriter;
 
     @Test
     public void writeCsvContents() throws Exception {
         csvFileWriter.write("Test Contents");
+    }
+
+    @Test
+    public void writeTextContents() throws Exception {
+        textFileWriter.write("Test Contents");
+    }
+
+    @Test
+    public void writeXmlContents() throws Exception {
+        xmlFileWriter.write("Test Contents");
     }
 }
